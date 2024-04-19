@@ -1,0 +1,21 @@
+
+.landing-page{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.text-and-login{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-register{
+  background-color: #E9E9E9;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+}

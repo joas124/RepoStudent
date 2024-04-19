@@ -1,14 +1,19 @@
+import { Outlet } from 'react-router-dom'
 import './navbar.css'
 import React from 'react'
-import { IoMenu } from "react-icons/io5";
 
 
-function Navbar() {
+export default function Navbar() {
   return (
-    <nav className="navbar">
-      <IoMenu className="menu-icon" onClick={() => console.log("nav")}/>
-    </nav>
+    <>
+      <nav className="navbar">
+        <div className='logo'>
+          <img src='./LogoRepoStudentsemfundo.png' alt='logo' className='logo-img'/>
+          <h1 className='logo-text'>RepoStudent</h1>
+        </div>
+      </nav>
+      <Outlet />
+    </>
+
   )
 }
-
-export default Navbar;

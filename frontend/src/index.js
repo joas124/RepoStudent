@@ -1,8 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
-import App from './App';
+import Navbar from './components/navbar';
+import LandingPage from './components/landing_page';
+import Login from './components/login';
+import SignUp from './components/signup';
+import NoPage from './components/nopage';
 import reportWebVitals from './reportWebVitals';
+
+export default function App(){
+  return(
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Navbar />} >
+          <Route index element={<LandingPage />} />
+          <Route path='login' element={<Login />} />
+          <Route path='signup' element={<SignUp />} />
+          <Route path='*' element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
