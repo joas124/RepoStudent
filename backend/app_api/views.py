@@ -45,3 +45,35 @@ class ImageView(APIView):
     def get(self, request, img, format=None):
         img = open('./profile_pics/'+img, 'rb')
         return HttpResponse(img, content_type='image/jpeg')
+    
+class ProjectView(APIView):
+    def get(self, request, project, format=None):
+        project = Project.objects.get(name=project)
+        serializer = ProjectSerializer(project)
+        json = serializer.data
+        json['files'] = [(f.name) for f in project.main_folder.file_set.all()]
+        json['filesID'] = [(f.id) for f in project.main_folder.file_set.all()]
+        json['folders'] = [f.name for f in project.main_folder.folder_set.all()]
+        json['owner'] = project.owner.user.username
+        json['members'] = [m.user.username for m in project.members.all()]
+        return Response(json)
+    
+class FolderView(APIView):
+    def get(self, request, project, folder_path, format=None):
+        project = Project.objects.get(name=project)
+        folder = project.main_folder
+        for folder_name in folder_path.split('/'):
+            folder = folder.folder_set.get(name=folder_name)
+        serializer = FolderSerializer(folder)
+        json = serializer.data
+        json['files'] = [f.name for f in folder.file_set.all()]
+        json['filesID'] = [f.id for f in folder.file_set.all()]
+        json['folders'] = [f.name for f in folder.folder_set.all()]
+        return Response(json)
+
+#Download File API
+class DownloadFileView(APIView):
+    def get(self, request, fileid, format=None):
+        file = File.objects.get(id=fileid)
+        file = open(file.file.path, 'rb')
+        return HttpResponse(file, content_type='application/octet-stream')

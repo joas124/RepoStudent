@@ -1,8 +1,14 @@
 import { Outlet, useNavigate } from 'react-router-dom'
-import AddIcon from '@mui/icons-material/Add';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 import './navbar.css'
 import React from 'react'
-import IconButton from '@mui/icons-material/Button'
+import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import SearchBar from "./search.js";
+import ProfileButton from './profilebutton.js';
+import Tooltip from '@mui/material/Tooltip';
 
 
 export default function Navbar() {
@@ -12,22 +18,25 @@ export default function Navbar() {
     navigate('/');
   };
 
-  return (
+  return(
     <>
       <nav className="navbar">
         <div className='logo' onClick={redirectToHomePage}>
           <img src='/LogoRepoStudentsemfundo.png' alt='logo' className='logo-img'/>
           <h1 className='logo-text'>RepoStudent</h1>
         </div>
-        <input type='text' placeholder='Search' className='search'/>
+        <div className="searchbar-container">
+          <SearchBar />
+        </div>
         <div className='nav-links'>
           <div className='new-project-div'>
-            <IconButton> 
-              <AddIcon className='add-icon' color='primary'/>
+             <Tooltip title="New Project">
+             <IconButton> 
+              <AddCircleIcon sx={{ fontSize: 50 }}  className='add-icon'/>
             </IconButton>
-            <p className='new-project-text'>New Project</p>
+          </Tooltip>
           </div>
-          <a href='/profile' className='nav-link'>Profile</a>
+          <ProfileButton/>
         </div>
       </nav>
       <Outlet />

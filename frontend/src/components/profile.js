@@ -1,4 +1,4 @@
-  import React, {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import { useParams } from 'react-router-dom';
 import {Avatar} from '@mui/material';
 import './profile.css'
@@ -45,28 +45,31 @@ export default function Profile(){
   else{
     return(
       <div className='profile'>
-        <h1>Profile - {profile.user} </h1>
-        <div className="profileContainer"> 
-          <div className="profile-pic">
-            <div className="profile-banner">
+      <h1>Profile - {profile.user} </h1>
+      <div className="profileContainer"> 
+        <div className="profile-pic">
+          <div className="profile-banner">
+            <div className="profile-banner-text">
               <Avatar src={`/${profile.user}.png`} alt='profile pic' className="large"/>
-              <h2>{profile.name}</h2>
+              <h2 className="center">{profile.name}</h2>
+              <h3 className="center">@{profile.user}</h3>
             </div>
-            <div className="profile-info">
-              <h2>Email: {profile.email}</h2>
-
-              <h2>Favorite Projects</h2>
-              {profile.favourite_projects.map((project) => {
-                return(
-                <div>
-                  <h3>{project}</h3>
-                </div>
-                );
-              })}
-            </div>
+          </div>
+          <div className="profile-info">
+            <h2>Email: {profile.email}</h2>
+    
+            <h2>Favorite Projects</h2>
+            {profile.favourite_projects.map((project) => {
+              return(
+              <div>
+                <h3>{project}</h3>
+              </div>
+              );
+            })}
           </div>
         </div>
       </div>
+    </div>
     );
   }
 }

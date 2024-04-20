@@ -60,12 +60,17 @@ export default function Login(){
     <ThemeProvider theme={theme}>
     <div className='login'>
       <div className='login-div'>
-        <h2 className='login-title'>LOGIN</h2>
-        <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-        <InputLabel htmlFor="outlined">Username</InputLabel>
-        <OutlinedInput
-          id='outlined'></OutlinedInput>
-        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+      <h2 className='login-title'>LOGIN</h2>
+      <div style={{ marginBottom: '1rem' }}> 
+        <TextField 
+          id="outlined"
+          label="Username"
+          fullWidth variant="outlined"
+        />
+      </div>
+      <div style={{ marginBottom: '1rem' }}>
+        <FormControl fullWidth variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
             type={showPassword ? 'text' : 'password'}
@@ -83,17 +88,18 @@ export default function Login(){
             }
             label="Password"
           />
-        </FormControl>
+          </FormControl>
+          </div>
           <Button color="primary"
           variant="contained"
-          style={{ position: 'absolute', bottom: 0, right: 0}}
-              onClick={()=> {
+          style={{ position: 'absolute' , left: '??'}}
+          onClick={()=> {
                 //login();
               }}
           >LOGIN
           </Button>
       </div>
-    </div>
+      </div>
     </ThemeProvider>
   );
 }

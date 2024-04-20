@@ -8,6 +8,8 @@ import Login from './components/login';
 import SignUp from './components/signup';
 import NoPage from './components/nopage';
 import Profile from './components/profile';
+import Repo from './components/repo';
+import Folder from './components/folder';
 import reportWebVitals from './reportWebVitals';
 
 export default function App(){
@@ -20,6 +22,10 @@ export default function App(){
           <Route path='signup' element={<SignUp />} />
           <Route path='profile' >
             <Route path=':username' element={<Profile />} />
+          </Route>
+          <Route path='repo'>
+            <Route path=':repo' element={<Repo />} />
+            <Route path=':repo/:folderpath' element={<Folder />} />
           </Route> 
           <Route path='*' element={<NoPage />} />
         </Route>

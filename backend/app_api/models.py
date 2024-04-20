@@ -1,7 +1,19 @@
+from os import path
 from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+
+def file_upload_path(instance, filename):
+  ## See all parent folders
+  filePath = instance.folder.name
+  parent = instance.folder.parent
+  while parent:
+    filePath = path.join(parent.name, filePath)
+    parent = parent.parent
+  filePath = path.join('repos', filePath)
+  return path.join(filePath, filename)
+
 
 
 class Project(models.Model):
@@ -26,8 +38,9 @@ class Folder(models.Model):
   updated_at = models.DateTimeField(auto_now=True)
 
 class File(models.Model):
-  name = models.CharField(max_length=128)
+  name = models.CharField(max_length=512)
   folder = models.ForeignKey(Folder, on_delete=models.CASCADE)
+  file = models.FileField(upload_to=file_upload_path, blank=True, null=True)
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
 

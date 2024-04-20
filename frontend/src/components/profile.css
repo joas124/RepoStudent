@@ -30,9 +30,17 @@
 .large{
     width: 8rem!important;
     height: 8rem!important;
-    margin-left: 60px;
-    margin-top: 20px;
+    margin-top: 100px;
     border: 4px white solid;
+}
+
+.profile-banner-text{
+    margin-left: 60px;
+}
+
+.center{
+    margin-top:0;
+    margin-left:12px;
 }
 
 .profile-banner{
