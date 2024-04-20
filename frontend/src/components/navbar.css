@@ -15,6 +15,10 @@
   align-items: center;
 }
 
+.logo:hover {
+  cursor: pointer;
+}
+
 .logo-img {
   height: 100%;
 }
@@ -35,7 +39,39 @@
   cursor: pointer;
 }
 
+.new-project-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.nav-links{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.new-project-btn{
+  border-radius: 50%;
+  border: 0;
+}
+
+.new-project-text{
+  margin: 0;
+  font-size: 1.05rem;
+  color: white;
+}
+
 .search{
   height: 50%;
   margin: 0 10px 0 10px;
+}
+
+.add-icon{
+  color:#f22323!important;
 }
