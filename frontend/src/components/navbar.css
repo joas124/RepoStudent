@@ -6,6 +6,7 @@
   height: 10vh;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .logo {
@@ -32,4 +33,9 @@
 
 .menu-icon:hover {
   cursor: pointer;
+}
+
+.search{
+  height: 50%;
+  margin: 0 10px 0 10px;
 }

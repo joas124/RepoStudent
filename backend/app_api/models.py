@@ -14,6 +14,7 @@ class Project(models.Model):
 
 class Customer(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE)
+  name = models.CharField(max_length=128, null=True, blank=True)
   profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
   projects = models.ManyToManyField(Project, related_name='members', blank=True)
   favourite_projects = models.ManyToManyField(Project, related_name='users', blank=True)

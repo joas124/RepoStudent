@@ -9,7 +9,14 @@
     border-radius: 0.50rem;
 }
 
+.profile-pic {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 5%;
+    /* margin: 1rem; */
+}
+
 .large{
-    width: 10rem;
-    height: 10rem;
+    width: 8rem!important;
+    height: 8rem!important;
 }

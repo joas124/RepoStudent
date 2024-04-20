@@ -48,7 +48,12 @@ export default function Profile(){
         <h1>Profile - {profile.user} </h1>
         <div className="profileContainer"> 
           <div className="profile-pic">
+            <div className="profile-banner">
+              
+            </div>
+
             <Avatar src={`/${profile.user}.png`} alt='profile pic' className="large"/>
+
           </div>
         </div>
 

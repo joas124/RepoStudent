@@ -42,26 +42,29 @@ export default function Login(){
     <div className='login'>
       <div className='login-div'>
         <h2 className='login-title'>LOGIN</h2>
-      <Box
-        >
-      <TextField
-        id="outlined"
-        label="Username"
-        />
-      <TextField
-          id="outlined-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-        />
-      </Box>
-      <Button 
-          variant="contained"
-          onClick={()=> {
-            //login();
-          }}
-      >LOGIN
-      </Button>
+          <Box className='input-field'
+            >
+          <TextField
+            id="outlined"
+            label="Username"
+            />
+          </Box>
+          <Box className='input-field'
+            >
+          <TextField
+              id="outlined-password-input"
+              label="Password"
+              type="password"
+              autoComplete="current-password"
+            />
+          </Box>
+          <Button 
+              variant="contained"
+              onClick={()=> {
+                //login();
+              }}
+          >LOGIN
+          </Button>
       </div>
     </div>
   );
