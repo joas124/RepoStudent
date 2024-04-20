@@ -7,6 +7,7 @@ import LandingPage from './components/landing_page';
 import Login from './components/login';
 import SignUp from './components/signup';
 import NoPage from './components/nopage';
+import Profile from './components/profile';
 import reportWebVitals from './reportWebVitals';
 
 export default function App(){
