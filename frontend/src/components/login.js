@@ -1,5 +1,8 @@
 import './login.css';
 import React from 'react';
+import Box from '@mui/material/Box';
+import {TextField} from '@mui/material';
+import {Button} from '@mui/material';
 
 export default function Login(){
 
@@ -37,13 +40,30 @@ export default function Login(){
   return(
     <div className='login'>
       <div className='login-div'>
-        <h2 className='login-title'>Login</h2>
-        <form className='login-form'>
-          <input type='text' className='login-user' placeholder='Email/Username' />
-          <input type='password' className='login-password' placeholder='Password'/>
-          <p className='login-message'>{message}</p>
-          <button className='login-button' onClick={(e) => login(e) }>Login</button>
-        </form>
+        <h2 className='login-title'>LOGIN</h2>
+        <Box
+        component="form"
+        sx={{
+        '& .MuiTextField-root': { m: 1, width: '25ch' },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+      <div>
+      <TextField
+        required
+        id="outlined-required"
+        label="Username"
+      />
+      <TextField
+          id="outlined-password-input"
+          label="Password"
+          type="password"
+          autoComplete="current-password"
+        />
+      </div>
+          <Button variant="outline" color="">LOGIN</Button>
+          </Box>
       </div>
     </div>
   );

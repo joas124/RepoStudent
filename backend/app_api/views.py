@@ -3,7 +3,8 @@ from rest_framework.response import Response
 from django.contrib.auth import login
 from rest_framework import status
 from rest_framework import permissions
-# from django.contrib.auth import authenticate
+from django.contrib.auth import get_user_model
+from django.http import HttpResponse
 from .models import Customer, Project, Folder, File
 from .serializer import UserLoginSerializer, UserSerializer, ProjectSerializer, FolderSerializer, FileSerializer
 
@@ -27,3 +28,18 @@ class UserRegisterView(APIView):
             serializer.save()
             return Response(status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class UserView(APIView):
+    def get(self, request, username, format=None):
+        user = get_user_model().objects.get(username=username)
+        user = Customer.objects.get(user=user)
+        serializer = UserSerializer(user)
+        json = serializer.data
+        json['user'] = user.user.username
+        json['email'] = user.user.email
+        return Response(json)
+
+class ImageView(APIView):
+    def get(self, request, img, format=None):
+        img = open('./profile_pics/'+img, 'rb')
+        return HttpResponse(img, content_type='image/jpeg')

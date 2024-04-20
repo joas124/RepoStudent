@@ -13,3 +13,14 @@
   align-items: center;
   width: 100%;
 }
+
+.login-title{
+  font-family: 'Orbitron';
+  color: #F22323;
+}
+
+.login-button {
+  width: 322.702px;
+  height: 48.383px;
+  flex-shrink: 0;
+}

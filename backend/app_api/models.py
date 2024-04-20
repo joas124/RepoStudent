@@ -14,12 +14,13 @@ class Project(models.Model):
 
 class Customer(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE)
-  projects = models.ManyToManyField(Project, related_name='members')
-  favourite_projects = models.ManyToManyField(Project, related_name='users')
+  profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
+  projects = models.ManyToManyField(Project, related_name='members', blank=True)
+  favourite_projects = models.ManyToManyField(Project, related_name='users', blank=True)
 
 class Folder(models.Model):
   name = models.CharField(max_length=128)
-  parent = models.ForeignKey('Folder', on_delete=models.CASCADE)
+  parent = models.ForeignKey('Folder', on_delete=models.CASCADE, blank=True, null=True)
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
 
