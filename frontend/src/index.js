@@ -17,6 +17,9 @@ export default function App(){
           <Route index element={<LandingPage />} />
           <Route path='login' element={<Login />} />
           <Route path='signup' element={<SignUp />} />
+          <Route path='profile' >
+            <Route path=':username' element={<Profile />} />
+          </Route> 
           <Route path='*' element={<NoPage />} />
         </Route>
       </Routes>
