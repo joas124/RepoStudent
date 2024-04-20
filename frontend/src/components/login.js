@@ -41,15 +41,7 @@ export default function Login(){
     <div className='login'>
       <div className='login-div'>
         <h2 className='login-title'>LOGIN</h2>
-        <Box
-        component="form"
-        sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-      <div>
+      <div className='login-form'>
       <TextField
         required
         id="outlined-required"
@@ -63,7 +55,6 @@ export default function Login(){
         />
       </div>
           <Button variant="outline" color="">LOGIN</Button>
-          </Box>
       </div>
     </div>
   );
