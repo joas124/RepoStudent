@@ -4,7 +4,7 @@ import React from 'react';
 export default function Login(){
   const login = (e) => {
     e.preventDefault();
-    const email = document.querySelector('.login-user').value;
+    const username = document.querySelector('.login-user').value;
     const password = document.querySelector('.login-password').value;
     try{
       fetch('http://localhost:8000/api/login/', {
@@ -12,8 +12,8 @@ export default function Login(){
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({email, password})
-      }).then(response => response.json())
+        body: JSON.stringify({username, password})
+      }).then(response => console.log(response))
     }catch(err){
       console.log(err);
     }

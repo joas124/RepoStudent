@@ -3,11 +3,12 @@ from .models import Customer, Project, Folder, File
 from django.contrib.auth import authenticate
 
 class UserLoginSerializer(serializers.Serializer):
-    email = serializers.EmailField()
+    username = serializers.CharField()
     password = serializers.CharField()
 
     def validate(self, data):
-        user = authenticate(email=data['email'], password=data['password'])
+        print(data)
+        user = authenticate(username=data['username'], password=data['password'])
         print(user)
         if user:
             if user.is_active:
