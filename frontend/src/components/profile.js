@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { useParams } from 'react-router-dom';
+import {Avatar} from '@mui/material';
+import './profile.css'
+
 
 export default function Profile(){
   const {username} = useParams();
@@ -43,8 +46,22 @@ export default function Profile(){
     return(
       <div className='profile'>
         <h1>Profile - {profile.user} </h1>
-        <img src={`/${profile.user}.png`} alt='profile pic' className='profile-pic'/>
+        <div className="profileContainer"> 
+          <div className="profile-pic">
+            <Avatar src={`/${profile.user}.png`} alt='profile pic' className="large"/>
+          </div>
+        </div>
+
         <h2>Email: {profile.email}</h2>
+
+        <h2>Favorite Projects</h2>
+        {profile.favourite_projects.map((project) => {
+          return(
+          <div>
+            <h3>{project}</h3>
+          </div>
+          );
+        })}
       </div>
     );
   }

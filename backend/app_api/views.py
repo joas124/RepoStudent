@@ -37,6 +37,8 @@ class UserView(APIView):
         json = serializer.data
         json['user'] = user.user.username
         json['email'] = user.user.email
+        json['favourite_projects'] = [p.name for p in user.favourite_projects.all()]
+        json['projects'] = [p.name for p in user.projects.all()]
         return Response(json)
 
 class ImageView(APIView):

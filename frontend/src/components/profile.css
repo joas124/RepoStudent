@@ -1,0 +1,15 @@
+
+.profileContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px;
+    width: 80%;
+    border-radius: 0.50rem;
+}
+
+.large{
+    width: 10rem;
+    height: 10rem;
+}

@@ -3,6 +3,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import {TextField} from '@mui/material';
 import {Button} from '@mui/material';
+import {Input} from '@mui/material';
 
 export default function Login(){
 
@@ -41,20 +42,26 @@ export default function Login(){
     <div className='login'>
       <div className='login-div'>
         <h2 className='login-title'>LOGIN</h2>
-      <div className='login-form'>
+      <Box
+        >
       <TextField
-        required
-        id="outlined-required"
+        id="outlined"
         label="Username"
-      />
+        />
       <TextField
           id="outlined-password-input"
           label="Password"
           type="password"
           autoComplete="current-password"
         />
-      </div>
-          <Button variant="outline" color="">LOGIN</Button>
+      </Box>
+      <Button 
+          variant="contained"
+          onClick={()=> {
+            //login();
+          }}
+      >LOGIN
+      </Button>
       </div>
     </div>
   );
