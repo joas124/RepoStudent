@@ -1,0 +1,14 @@
+.go-back-div{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin: 10px 0 10px 20px;
+}
+
+.go-back-div:hover{
+    cursor: pointer;
+}
+
+.folderDiv{
+  margin-left: 5rem;
+}

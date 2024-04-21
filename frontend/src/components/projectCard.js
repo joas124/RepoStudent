@@ -22,7 +22,7 @@ const bull = (
 
 
 function card(props){
-  if(props.repo){
+  if(props.isRepo){
     return(
     <ThemeProvider theme={theme}>
     <React.Fragment>

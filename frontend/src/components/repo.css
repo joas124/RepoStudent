@@ -1,4 +1,13 @@
 
+.repo{
+  border-left: 3px solid black;
+  border-right: 3px   solid black;
+  width: 80vw;
+  height: 90vh;
+  justify-content: center;
+  margin: 0 auto;
+  align-items: center;
+}
 
 .file-anchor:hover{
   cursor: pointer;
@@ -8,15 +17,20 @@
 .repo-title{
   font-family: 'Orbitron';
   margin-left: 5rem;
+  color: #F22323;
 }
 
 .repo-desc{
   font-size: medium;
   margin-left: 5rem;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 .repo-owned{
   font-size: small;
   margin-left: 5rem;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .folder{
@@ -24,5 +38,9 @@
 }
 
 .file{
+  margin-left: 5rem;
+}
+
+.repo-list{
   margin-left: 5rem;
 }

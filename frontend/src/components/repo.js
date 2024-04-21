@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from "react";
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { styled } from '@mui/material/styles';
-import {Box,List,ListItem,ListItemIcon,ListItemText,Typography,Grid,FormGroup,IconButton} from '@mui/material/';
+import { styled, ThemeProvider } from '@mui/material/styles';
+import {Button,List,ListItem,ListItemIcon,ListItemText,Typography,Grid,FormGroup,IconButton} from '@mui/material/';
+import FolderIcon from '@mui/icons-material/Folder';
+import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import './repo.css'
+import theme from "./theme";
 
 export default function Repo(){
 
@@ -61,7 +64,6 @@ export default function Repo(){
     fetchData();
   }, [repo]);
 
-  console.log(project);
   if(project === null){
     return(
       <div className='repo'>
@@ -70,6 +72,7 @@ export default function Repo(){
     );
   }else{
     return(
+      <ThemeProvider theme={theme}>
       <div className='repo'>
         <div className='repo-title'>
         <h1>Repo - {project.name} </h1>
@@ -84,37 +87,50 @@ export default function Repo(){
             <div className="repo-owned">
             <h2>Owner: {project.owner}</h2>
             </div>
-            {project.folders.map((folder, index) => {
-              return(
-                <div className="folder" key={index}>
-                  <Link to={`./${folder}`}>{folder}</Link>
-                </div>
-                );
-            })}
+            <div className="repo-list">
+            <Demo>
+              <List sx={{backgroundColor: 'transparent'}}>
+                {project.folders.map((folder, index) => {
+                  return(
+                    <ListItem>
+                      <ListItemIcon>
+                       <FolderIcon />
+                      </ListItemIcon>
+                      <Button size="small" color="grey" variant="outlined">
+                        <Link className="link-folder" to={`./${folder}`}> {folder}</Link>
+                      </Button>
+                    </ListItem>        
+                    );
+                })}
+              </List>
             {project.files.map((file, index) => {
               return(
-                <div className="file" key={index}>
-                  <a className="file-anchor" onClick={() => downloadFile(project.filesID[index], file)}>{file}</a>
-                </div>
-                );
+                <ListItem>
+                <ListItemIcon>
+                 <InsertDriveFileIcon />
+                </ListItemIcon>
+                <a className="file-anchor" onClick={() => downloadFile(project.filesID[index], file)}>{file}</a>
+              </ListItem>        
+              );
             })}
+            </Demo>
+            </div>
           </div>
         </div>
       </div>
+      </ThemeProvider>
     );
   }
 
   /*<Grid item xs={12} md={6}>
           <Demo>
             <List>
+            project.folders.map((folder, index)
                 <ListItem>
                   <ListItemIcon>
                     <FolderIcon />
                   </ListItemIcon>
-                  <ListItemText
-                    primary= 
-                    secondary={secondary ? 'Secondary text' : null}
-                  />
+                  <Link to={'./${folder}'>{folder}}
                 </ListItem>,
               )}
             </List>

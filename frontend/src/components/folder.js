@@ -2,6 +2,14 @@ import React, {useState, useEffect} from "react";
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { styled } from '@mui/material/styles';
+import {Box,List,ListItem,ListItemIcon,ListItemText,Typography,Grid,FormGroup,IconButton} from '@mui/material/';
+import FolderIcon from '@mui/icons-material/Folder';
+import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
+import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
+
+
+
 import './folder.css'
 
 export default function Folder(){
@@ -31,10 +39,12 @@ export default function Folder(){
   const params = useParams();
   const repo = params.repo;
   const folderpath = params['*'];
-  console.log(repo);
-  console.log(folderpath);
   const [folder, setFolder] = useState(null);
   const history = useNavigate();
+  const Demo = styled('div')(({ theme }) => ({
+    backgroundColor: theme.palette.background.paper,
+  }));
+
   
   async function fetchFolder(){
     try{
@@ -75,21 +85,37 @@ export default function Folder(){
         <h1>Folder - {folder.name} </h1>
         <div className="folderContainer"> 
           <div className="folder-info">
-            <a className='go-back' onClick={() => history(-1)}>Go Back</a>
-            {folder.folders.map((folder, index) => {
-              return(
-                <div className="folder" key={index}>
-                  <Link to={`./${folderpath}/${folder}`}>{folder}</Link>
-                </div>
-                );
-            })}
-            {folder.files.map((file, index) => {
-              return(
-                <div className="file">
-                  <a className="file-anchor" onClick={() => downloadFile(folder.filesID[index], file)}>{file}</a>
-                </div>
-                );
-            })}
+            <div className="go-back-div">
+              <a className='go-back' onClick={() => history(-1)}>Go Back</a>
+              <KeyboardReturnIcon />
+            </div>
+            <Demo>
+              <List>
+                {folder.folders.map((folder, index) => {
+                  return(
+                    <ListItem>
+                      <ListItemIcon>
+                        <FolderIcon />
+                      </ListItemIcon>
+                      <Link to={`./${folderpath}/${folder}`}>{folder}</Link>
+                    </ListItem>
+                    );
+                })}
+              </List>
+
+            </Demo>
+              <List>
+                {folder.files.map((file, index) => {
+                  return(
+                    <ListItem>
+                      <ListItemIcon>
+                        <InsertDriveFileIcon />
+                      </ListItemIcon>
+                        <a className="file-anchor" onClick={() => downloadFile(folder.filesID[index], file)}>{file}</a>
+                      </ListItem>
+                    );
+                })}
+              </List>
           </div>
         </div>
       </div>
@@ -97,3 +123,31 @@ export default function Folder(){
   }
 
 }
+
+/*
+
+<Demo>
+  <List>
+    {project.folders.map((folder, index) => {
+      return(
+        <ListItem>
+          <ListItemIcon>
+            <FolderIcon />
+          </ListItemIcon>
+          <Link to={`./${folder}`}>{folder}</Link>
+        </ListItem>        
+        );
+    })}
+  </List>
+</Demo>
+{project.files.map((file, index) => {
+  return(
+    <ListItem>
+    <ListItemIcon>
+      <InsertDriveFileIcon />
+    </ListItemIcon>
+    <a className="file-anchor" onClick={() => downloadFile(project.filesID[index], file)}>{file}</a>
+  </ListItem>        
+  );
+})}
+            */
