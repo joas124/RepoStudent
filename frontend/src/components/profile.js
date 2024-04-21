@@ -5,6 +5,9 @@ import './profile.css'
 import { Link } from 'react-router-dom';
 import { hr } from 'react'; // Import hr
 import OutlinedCard from "./projectCard";
+import {Button,List,ListItem,ListItemIcon,ListItemText,Typography,Grid,FormGroup,IconButton} from '@mui/material/';
+import FolderIcon from '@mui/icons-material/Folder';
+
 
 
 export default function Profile(){
@@ -58,14 +61,15 @@ export default function Profile(){
             </div>
             <div className="profile-info">
               <h2>Favorite Projects</h2>
-              {profile.favourite_projects.map((project, index) => {
-                return(
-                <div key={index}>
-                  {/*<OutlinedCard name={result.name} description={result.description} />*/}
+              {profile.favourite_projects.map((project, index) => (
+                <ListItem>
+                  <ListItemIcon>
+                    <FolderIcon />
+                  </ListItemIcon>
                   <Link to={`../repo/${project}`} >{project}</Link>
-                </div>
-                );
-              })}
+                </ListItem>        
+                )
+              )}
             </div>
           </div>
         </div>
