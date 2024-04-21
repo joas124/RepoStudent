@@ -10,6 +10,7 @@ import NoPage from './components/nopage';
 import Profile from './components/profile';
 import Repo from './components/repo';
 import Folder from './components/folder';
+import SearchRepo from './components/searchRepo';
 import reportWebVitals from './reportWebVitals';
 
 export default function App(){
@@ -23,6 +24,7 @@ export default function App(){
           <Route path='profile/:username' element={<Profile />} />
           <Route path='repo/:repo' element={<Repo />} />
           <Route path='repo/:repo/*' element={<Folder />} />
+          <Route path='search/:query' element={<SearchRepo />} />
           <Route path='*' element={<NoPage />} />
         </Route>
       </Routes>

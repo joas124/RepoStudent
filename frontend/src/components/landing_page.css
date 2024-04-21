@@ -9,7 +9,7 @@
 
 .text-and-login {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   width:50%;
 
@@ -19,7 +19,7 @@
 font-family: "Orbitron", sans-serif;
 font-size: clamp(1.5rem,5vw,2.5rem);
 letter-spacing: 0.25rem;
-text-align: center;
+text-align: left;
 font-weight: 900;
 }
 
@@ -34,11 +34,11 @@ font-weight: 900;
 
 .landing-page {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   width: 100%;
   position: relative;
   bottom: 0;
-  right: 0;
+  right:0;
 }
 
 .image-landing{

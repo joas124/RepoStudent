@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { useParams } from 'react-router-dom';
 import {Avatar} from '@mui/material';
 import './profile.css'
+import { Link } from 'react-router-dom';
 import { hr } from 'react'; // Import hr
 
 export default function Profile(){
@@ -58,7 +59,7 @@ export default function Profile(){
               {profile.favourite_projects.map((project, index) => {
                 return(
                 <div key={index}>
-                  <h3>{project}</h3>
+                  <Link to={`../repo/${project}`} >{project}</Link>
                 </div>
                 );
               })}

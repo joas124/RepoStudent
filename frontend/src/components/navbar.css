@@ -20,6 +20,10 @@
   align-self: center;
 }
 
+.searchbar-containerAlt{
+  margin-right: 30px;
+}
+
 .logo:hover {
   cursor: pointer;
 }

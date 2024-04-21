@@ -58,6 +58,7 @@ class ProjectView(APIView):
         json['members'] = [m.user.username for m in project.members.all()]
         return Response(json)
     
+    
 class FolderView(APIView):
     def get(self, request, project, folder_path, format=None):
         project = Project.objects.get(name=project)
@@ -69,6 +70,21 @@ class FolderView(APIView):
         json['files'] = [f.name for f in folder.file_set.all()]
         json['filesID'] = [f.id for f in folder.file_set.all()]
         json['folders'] = [f.name for f in folder.folder_set.all()]
+        return Response(json)
+    
+
+class SearchRepoView(APIView):
+    def get(self, request, query, format=None):
+        projects = Project.objects.filter(name__icontains=query)
+        serializer = ProjectSerializer(projects, many=True)
+        json = serializer.data
+        return Response(json)
+    
+class SearchUserView(APIView):
+    def get(self, request, query, format=None):
+        users = Customer.objects.filter(name__icontains=query)
+        serializer = UserSerializer(users, many=True)
+        json = serializer.data
         return Response(json)
 
 #Download File API
