@@ -20,13 +20,9 @@ export default function App(){
           <Route index element={<LandingPage />} />
           <Route path='login' element={<Login />} />
           <Route path='signup' element={<SignUp />} />
-          <Route path='profile' >
-            <Route path=':username' element={<Profile />} />
-          </Route>
-          <Route path='repo'>
-            <Route path=':repo' element={<Repo />} />
-            <Route path=':repo/:folderpath' element={<Folder />} />
-          </Route> 
+          <Route path='profile/:username' element={<Profile />} />
+          <Route path='repo/:repo' element={<Repo />} />
+          <Route path='repo/:repo/*' element={<Folder />} />
           <Route path='*' element={<NoPage />} />
         </Route>
       </Routes>

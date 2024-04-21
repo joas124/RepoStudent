@@ -79,7 +79,7 @@ export default function Repo(){
             })}
             {project.files.map((file, index) => {
               return(
-                <div className="file">
+                <div className="file" key={index}>
                   <a className="file-anchor" onClick={() => downloadFile(project.filesID[index], file)}>{file}</a>
                 </div>
                 );

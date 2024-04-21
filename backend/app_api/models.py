@@ -20,6 +20,7 @@ class Project(models.Model):
   name = models.CharField(max_length=128)
   description = models.TextField()
   owner = models.ForeignKey('Customer', on_delete=models.CASCADE)
+  subject = models.CharField(max_length=128, null=True, blank=True)
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
   main_folder = models.ForeignKey('Folder', on_delete=models.CASCADE)

@@ -27,8 +27,9 @@ export default function Folder(){
         console.error('Error downloading file:', error);
       });
   }
-
-  const {repo, folderpath} = useParams();
+  const params = useParams();
+  const repo = params.repo;
+  const folderpath = params['*'];
   console.log(repo);
   console.log(folderpath);
   const [folder, setFolder] = useState(null);
@@ -72,11 +73,11 @@ export default function Folder(){
         <h1>Folder - {folder.name} </h1>
         <div className="folderContainer"> 
           <div className="folder-info">
-            <Link to={`/repo/${repo}/${parentFolder}`}>Go Back</Link>
+            <Link to={''}>Go Back</Link>
             {folder.folders.map((folder, index) => {
               return(
                 <div className="folder" key={index}>
-                  <Link to={`./${folder}`}>{folder}</Link>
+                  <Link to={`./${folderpath}/${folder}`}>{folder}</Link>
                 </div>
                 );
             })}

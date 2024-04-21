@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from 'react-router-dom'
+  import { Outlet, useNavigate } from 'react-router-dom'
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import './navbar.css'
 import React from 'react'
@@ -30,7 +30,7 @@ export default function Navbar() {
         </div>
         <div className='nav-links'>
           <div className='new-project-div'>
-             <Tooltip title="New Project">
+             <Tooltip size="large" title="New Project">
              <IconButton> 
               <AddCircleIcon sx={{ fontSize: 50 }}  className='add-icon'/>
             </IconButton>

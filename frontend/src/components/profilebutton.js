@@ -69,7 +69,7 @@ export default function ProfileButton() {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={redirectToHomePage}>Logout</MenuItem>
+                <MenuItem onClick={redirectToHomePage}>Sign out</MenuItem>
               </Menu>
             </div>
           )}
