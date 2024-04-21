@@ -1,0 +1,52 @@
+.card{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    display: flex;
+    width: 20%;
+}
+  
+.proj-description-search{
+  text-overflow: ellipsis;
+  width: 80%;
+}
+
+.card-content{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.link-repo{
+    text-decoration: none;
+    color: #F22323;
+}
+
+.search-select{
+  display: flex;
+  justify-content: center;
+  color: #F22323;
+}
+
+.search-selected{
+  margin-left: 1rem;
+  margin-right: 1rem;
+  text-decoration: underline;
+  font-family: 'Orbitron';
+  cursor: pointer;
+}
+
+.search-not-selected{
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-family: 'Orbitron';
+  cursor: pointer;
+}
+
+.cardflex{
+    display: flex;
+}
+
+.backgroundcolor {
+    background-color: rgba(228, 228, 228, 0.90)
+}

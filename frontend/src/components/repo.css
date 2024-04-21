@@ -4,3 +4,25 @@
   cursor: pointer;
   color: #00A0C6;
 }
+
+.repo-title{
+  font-family: 'Orbitron';
+  margin-left: 5rem;
+}
+
+.repo-desc{
+  font-size: medium;
+  margin-left: 5rem;
+}
+.repo-owned{
+  font-size: small;
+  margin-left: 5rem;
+}
+
+.folder{
+  margin-left: 5rem;
+}
+
+.file{
+  margin-left: 5rem;
+}

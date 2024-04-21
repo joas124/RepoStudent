@@ -47,19 +47,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchBar(){
-return(
-     <ThemeProvider theme={theme}>
-    <Typography/>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-    </ThemeProvider>
-);
+export default function SearchBar(props){
+  return(
+      <ThemeProvider theme={theme}>
+      <Typography/>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+                onKeyDown={props.handleSearch}
+              />
+            </Search>
+      </ThemeProvider>
+  );
 }

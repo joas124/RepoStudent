@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { styled } from '@mui/material/styles';
+import {Box,List,ListItem,ListItemIcon,ListItemText,Typography,Grid,FormGroup,IconButton} from '@mui/material/';
 import './repo.css'
 
 export default function Repo(){
@@ -30,6 +32,10 @@ export default function Repo(){
 
   const {repo} = useParams();
   const [project, setProject] = useState(null);
+
+  const Demo = styled('div')(({ theme }) => ({
+    backgroundColor: theme.palette.background.paper,
+  }));
   
   async function fetchRepo(){
     try{
@@ -65,11 +71,19 @@ export default function Repo(){
   }else{
     return(
       <div className='repo'>
+        <div className='repo-title'>
         <h1>Repo - {project.name} </h1>
+        </div>
         <div className="repoContainer"> 
           <div className="repo-info">
-            <h2>Description: {project.description}</h2>
+            <div className="repo-desc">
+            <h2> 
+              {project.description}
+              </h2>
+            </div>
+            <div className="repo-owned">
             <h2>Owner: {project.owner}</h2>
+            </div>
             {project.folders.map((folder, index) => {
               return(
                 <div className="folder" key={index}>
@@ -90,4 +104,20 @@ export default function Repo(){
     );
   }
 
+  /*<Grid item xs={12} md={6}>
+          <Demo>
+            <List>
+                <ListItem>
+                  <ListItemIcon>
+                    <FolderIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary= 
+                    secondary={secondary ? 'Secondary text' : null}
+                  />
+                </ListItem>,
+              )}
+            </List>
+          </Demo>
+        </Grid>*/
 }

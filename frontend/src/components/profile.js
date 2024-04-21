@@ -4,6 +4,8 @@ import {Avatar} from '@mui/material';
 import './profile.css'
 import { Link } from 'react-router-dom';
 import { hr } from 'react'; // Import hr
+import OutlinedCard from "./projectCard";
+
 
 export default function Profile(){
   const {username} = useParams();
@@ -59,6 +61,7 @@ export default function Profile(){
               {profile.favourite_projects.map((project, index) => {
                 return(
                 <div key={index}>
+                  {/*<OutlinedCard name={result.name} description={result.description} />*/}
                   <Link to={`../repo/${project}`} >{project}</Link>
                 </div>
                 );

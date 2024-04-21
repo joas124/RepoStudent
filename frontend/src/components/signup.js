@@ -29,7 +29,7 @@ export default function SignUp(){
     <ThemeProvider theme={theme}>
     <div className='signup'>
       <div className='signup-div'>
-        <h2 className='signup-title'>Sign Up</h2>
+        <h2 className='signup-title'>SIGN UP</h2>
         <div style={{ marginBottom: '1rem' }}>
           <TextField 
           id='outlined'
@@ -76,7 +76,6 @@ export default function SignUp(){
           </div>
           <Button color="primary"
           variant="contained"
-          style={{ marginTop: '1rem' }}
           onClick={()=> {
                 //login();
               }}
@@ -84,6 +83,7 @@ export default function SignUp(){
           </Button>
       </div>
     </div>
+  
     </ThemeProvider>
   );
 }

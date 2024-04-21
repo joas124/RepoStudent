@@ -16,14 +16,22 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const [active, setActive] = React.useState(true); // This line remains the same
-
   const location = useLocation();
+
+  const handleSearch = (event) => {
+    if(event.key === "Enter"){
+      navigate(`/search/${event.target.value}`);
+    }
+  }
 
   
   React.useEffect(() => {
-    if ((location.pathname === "/login"|| location.pathname==="/" || location.pathname===" "|| location.pathname==="/signup" ))
-    setActive(false);
-  });
+    if ((location.pathname === "/login"|| location.pathname==="/" || location.pathname===" "|| location.pathname==="/signup" )){
+      setActive(false);
+    }else{
+      setActive(true);
+    }
+  }, [location.pathname]);
 
 
   const redirectToHomePage = () => {
@@ -39,7 +47,7 @@ export default function Navbar() {
           <h1 className='logo-text'>RepoStudent</h1>
         </div>
         <div className="searchbar-containerAlt">
-          <SearchBar />
+          <SearchBar  handleSearch={handleSearch}/>
         </div>
       </nav>
       <Outlet />
@@ -55,7 +63,7 @@ export default function Navbar() {
           <h1 className='logo-text'>RepoStudent</h1>
         </div>
         <div className="searchbar-container">
-          <SearchBar />
+          <SearchBar  handleSearch={handleSearch}/>
         </div>
         <div className='nav-links'>
           <div className='new-project-div'>

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import './folder.css'
 
@@ -33,6 +34,7 @@ export default function Folder(){
   console.log(repo);
   console.log(folderpath);
   const [folder, setFolder] = useState(null);
+  const history = useNavigate();
   
   async function fetchFolder(){
     try{
@@ -73,7 +75,7 @@ export default function Folder(){
         <h1>Folder - {folder.name} </h1>
         <div className="folderContainer"> 
           <div className="folder-info">
-            <Link to={''}>Go Back</Link>
+            <a className='go-back' onClick={() => history(-1)}>Go Back</a>
             {folder.folders.map((folder, index) => {
               return(
                 <div className="folder" key={index}>

@@ -52,6 +52,7 @@ font-weight: 900;
 .join{
   font-family: "Orbitron", sans-serif;
   font-size: clamp(1.5rem,1.5vw,2.5rem);
+  margin-left: 2rem;
   font-weight: 800;
   letter-spacing: 0.25rem;
 }

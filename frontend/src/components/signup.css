@@ -1,18 +1,29 @@
 .signup{
   display: flex;
   width: 100%;
-  height: 90vh;
+  height: 80vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 .signup-title{
+  font-size: 7rem;
   font-family: 'Orbitron';
   color: #F22323;
+  margin: 0;
+  padding:0;
 }
 
-.butao{
+.butao{ 
   background-color: #F22323;
   color: white;
+}
+.rectangle {
+  background-color: #E9E9E9; 
+  width: 100%; 
+  height:100vh; 
+  align-self:flex-start;
+  margin:0;
+  padding:0;
 }

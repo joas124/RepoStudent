@@ -17,6 +17,10 @@ export default function ProfileButton() {
     navigate('/');
   };
 
+  const redirectToProfilePage = () => {
+    navigate('/profile/joas124')
+  };
+
   const handleChange = (event) => {
     setAuth(event.target.checked);
   };
@@ -68,7 +72,7 @@ export default function ProfileButton() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={redirectToProfilePage}>Profile</MenuItem>
                 <MenuItem onClick={redirectToHomePage}>Sign out</MenuItem>
               </Menu>
             </div>

@@ -6,6 +6,7 @@ from rest_framework import permissions
 from django.contrib.auth import get_user_model
 from django.http import HttpResponse
 from .models import Customer, Project, Folder, File
+from django.core.exceptions import ObjectDoesNotExist
 from .serializer import UserLoginSerializer, UserSerializer, ProjectSerializer, FolderSerializer, FileSerializer
 
 # Login API
@@ -82,10 +83,19 @@ class SearchRepoView(APIView):
     
 class SearchUserView(APIView):
     def get(self, request, query, format=None):
-        users = Customer.objects.filter(name__icontains=query)
+        u = get_user_model().objects.filter(username__icontains=query)
+        users = Customer.objects.filter(user__in=u)
         serializer = UserSerializer(users, many=True)
-        json = serializer.data
-        return Response(json)
+        json_data = serializer.data
+        # add usernames to the json
+        for user_data in json_data:
+            try:
+                user = get_user_model().objects.get(id=user_data['user'])
+                user_data['user'] = user.username
+            except ObjectDoesNotExist:
+                user_data['user'] = None  # Or handle the case when the user doesn't exist
+        print(json_data)
+        return Response(json_data)
 
 #Download File API
 class DownloadFileView(APIView):

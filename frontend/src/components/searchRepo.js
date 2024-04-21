@@ -18,6 +18,8 @@ import FolderIcon from '@mui/icons-material/Folder';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { ThemeProvider } from "@mui/material/styles";
 import OutlinedCard from "./projectCard";
+import './searchRepo.css'
+
 
 export default function SearchRepo(){
   
@@ -56,38 +58,57 @@ export default function SearchRepo(){
       await fetchRepoUser();
     }
     fetchData();
-  }, [query]);
+  }, [query, isRepo]);
   
   if(isRepo){
     return(
       <ThemeProvider theme={theme}>
+      <div className="search-select">
+        <a className="search-selected">Repositories</a>
+        <a onClick={() => setIsRepo(false)} className="search-not-selected">Users</a>
+      </div>
       <Grid item xs={12} md={6}>
-        <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div" color={"primary"}>
+        <Typography sx={{ ml:4, mt: 4, mb: 2 }} variant="h6" component="div" color={"primary"} fontFamily={"Orbitron"}>
           Search results:
         </Typography>
         <Demo>
-          <List>
-                {results != null ? results.map((result) => (
-                  <OutlinedCard name={result.name} description={result.description} />
-                )): <p>No results found</p> 
-                }
+          <List className="cardflex">
+            {results != null ? results.map((result) => (
+              <div className="card">
+                <OutlinedCard name={result.name} description={result.description} isRepo={isRepo} />
+              </div>
+              )): <p>No results found</p> 
+            }
           </List>
         </Demo>
       </Grid>
       </ThemeProvider>
     );
   }else{
-    <div>
-    <h1>Search Repo</h1>
-    <div>
-      {results && results.map((result) => (
-        <div key={result.id}>
-          <h2>{result.name}</h2>
-          <p>{result.description}</p>
-        </div>
-      ))}
-    </div>
-  </div>
+    console.log(results);
+    return(
+      <ThemeProvider theme={theme}>
+      <div className="search-select">
+        <a onClick={() => setIsRepo(true)} className="search-not-selected">Repositories</a>
+        <a className="search-selected">Users</a>
+      </div>
+      <Grid item xs={12} md={6}>
+        <Typography sx={{ ml:4, mt: 4, mb: 2 }} variant="h6" component="div" color={"primary"} fontFamily={"Orbitron"}>
+          Search results:
+        </Typography>
+        <Demo>
+          <List className="cardflex">
+            {results != null ? results.map((result) => (
+              <div className="card">
+                <OutlinedCard name={result.name} username={result.user} description={result.description} isRepo={isRepo} />
+              </div>
+              )): <p>No results found</p> 
+            }
+          </List>
+        </Demo>
+      </Grid>
+      </ThemeProvider>
+    );
   }
   
 }
